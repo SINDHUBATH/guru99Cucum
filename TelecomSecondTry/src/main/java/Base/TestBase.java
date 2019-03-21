@@ -18,13 +18,13 @@ public class TestBase {
 
 	public TestBase() throws IOException {
 		prop = new Properties();
-		FileInputStream fs = new FileInputStream("/Users/ramizramizmrr/eclipse-workspace/TelecomSecondTry/"
-				+ "src/main/java/Util/config.properties");
+		FileInputStream fs = new FileInputStream(
+				"/Users/ramizramizmrr/git/guru99Cucum/TelecomSecondTry/src/main/java/Util/config.properties");
 		prop.load(fs);
 	}
 
 	public static void setUp() {
-		
+
 		if (prop.getProperty("browser").equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver", "/Users/ramizramizmrr/Downloads/chromedriver");
 			driver = new ChromeDriver();
@@ -33,7 +33,7 @@ public class TestBase {
 			driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		}
-		
+
 		else if (prop.getProperty("browser").equalsIgnoreCase("firefox")) {
 			System.setProperty("webdriver.gecko.driver", "/Users/ramizramizmrr/Downloads/geckodriver");
 			driver = new FirefoxDriver();
@@ -42,11 +42,11 @@ public class TestBase {
 			driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		}
-		
+
 	}
 
 	public static void initializeBrowser() {
-		driver.get(prop.getProperty("url"));
+		driver.get(prop.getProperty("telecomProjectUrl"));
 	}
 
 	public static void tearDown() {

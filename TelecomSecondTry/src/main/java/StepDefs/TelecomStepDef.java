@@ -12,9 +12,11 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class StepDefinition extends TestBase {
+public class TelecomStepDef extends TestBase {
 
-	public StepDefinition() throws IOException {
+	TestBase testBase = new TestBase();
+	
+	public TelecomStepDef() throws IOException {
 		super();
 	}
 
@@ -22,10 +24,10 @@ public class StepDefinition extends TestBase {
 	AddCustomerPage addCustomerPageObj;
 	AccessDetailsPage accessDetailsPageObj;
 
-	@Before
-	public void launchBrowser() {
-		TestBase.setUp();
-	}
+//	@Before
+//	public void launchBrowser() {
+//		TestBase.setUp();
+//	}
 
 	@Given("user is on HomePage")
 	public void user_is_on_HomePage() {
@@ -38,14 +40,6 @@ public class StepDefinition extends TestBase {
 		addCustomerPageObj = homePageObj.clickonAddCustomerLink();
 	}
 
-//	@Then("Then user fills details in add customer page by entering \"(.*)\" and \"(.*)\" "
-//			+ "and \"(.*)\" and \"(.*)\" and \"(.*)\"")
-//
-//	public void user_fills_details_in_add_customer_page(String fn, String ln, String ml, String addrs, String phNum) {
-//		accessDetailsPageObj = addCustomerPageObj.fillCustomerDetails(fn, ln, ml, addrs, phNum);
-//
-//	}
-
 	@Then("user fills details in add customer page by entering \"(.*)\" and \"(.*)\" and \"(.*)\" and \"(.*)\" and \"(.*)\"")
 	public void user_fills_details_in_add_customer_page_by_entering_and_and_and_and(String fn, String ln, String ml,
 			String add, String num) throws IOException {
@@ -57,10 +51,10 @@ public class StepDefinition extends TestBase {
 		String customerId = accessDetailsPageObj.getCustomerId();
 		System.out.println("Customer Id = " + customerId);
 	}
-
-	@After
-	public void closeBrowser() {
-		TestBase.tearDown();
-	}
+//
+//	@After
+//	public void closeBrowser() {
+//		TestBase.tearDown();
+//	}
 
 }
